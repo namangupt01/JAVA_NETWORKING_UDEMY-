@@ -1,0 +1,19 @@
+package Javanetwork;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+public class Network {
+    public static void main(String[] args) throws UnknownHostException
+    {
+       // here i want to know about the ip address of the host name by its address
+        InetAddress myaddress = InetAddress.getByName("www.tinder.com");
+   System.out.println(myaddress);
+
+   System.out.println("Host Name:" + myaddress.getHostName());
+        System.out.println("Host Address:" + myaddress.getHostAddress());
+        System.out.println("Canonical Host Name:" + myaddress.getCanonicalHostName());
+    }
+// here we are getting the ip address of the instagram is www.instagram.com/xx.x..xx.x.xx. for this specific domain
+
+
+}
