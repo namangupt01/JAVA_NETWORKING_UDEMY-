@@ -1,0 +1,36 @@
+package Javanetwork;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.ByteBuffer;
+
+
+
+public class Network {
+    public static void main(String[] args) {
+        try {
+            URL url = new URL("https://instagram.com");
+            URLConnection myurlconnection = url.openConnection();
+            InputStream inputstream = myurlconnection.getInputStream();
+            ReadableByteChannel readbychannel = Channels.newChannel(inputstream);
+            ByteBuffer buffer = ByteBuffer.allocate(64);
+
+            String myline=null;
+            while (readbychannel.read(buffer)>0) {
+                System.out.println(new String(buffer.array()));
+                buffer.clear();
+            }
+         readbychannel.close();
+        } catch (IOException exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+}
+
+// this is used to improve the technique to retrieve the data from the webseite in a  better way 
